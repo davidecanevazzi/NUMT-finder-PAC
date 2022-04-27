@@ -12,4 +12,4 @@ change the path to the fasta-fastq file inside the folder data/, then run:
 snakemake --cores {number _of_cores} NUMTs.txt
 ```
 
-![dag](dag.pdf)
+![dag](dag-1.png)
