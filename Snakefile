@@ -1,6 +1,6 @@
-###############################################################################
+################################################################################
 
-################################# NUMTs-finder ##################################
+############################### NUMTs-finder ##################################
 
 ###############################################################################
 
@@ -25,7 +25,7 @@ rule fasta:
     output:
     	"data/sample.fasta"
     shell:
-    	"seqtk seq -a data/dau.fasta > {output}"
+    	"seqtk seq -a data/FAN51167_1_0.fastq > {output}"
 
 rule minimap_mit:
     input:
@@ -64,17 +64,25 @@ rule minimap_tot:
     input:
     	"data/k_mers.fasta"	
     output:
-        "data/aln.paf"
+        "data/aln_pre.paf"
     shell:
         "minimap2 -t 24 -z 600,200 -x map-ont data/GRCh38.primary_assembly.genome.fa data/k_mers.fasta > {output}"
-        
+    
+rule filt:
+    input:
+    	"data/aln_pre.paf"	
+    output:
+        "data/aln.paf"
+    shell:
+    	"awk '$12 >= 30' {input} > {output}"
+    	    
 rule greps_mit:
     input:
     	"data/aln.paf"	
     output:
         "chrM.paf"
     shell:
-    	"grep {chrM} data/aln.paf > {output}"
+    	" grep {chrM} aln.paf > {output}"
         
 rule greps_nuc:
     input:
@@ -82,15 +90,12 @@ rule greps_nuc:
     output:
         "nuc.paf"
     shell:
-    	"grep -v {chrM} data/aln.paf > {output}"
+    	"grep -v {chrM} aln.paf > {output}"
         
-rule detect:
+rule detect_NUMTs:
     input:
     	mit="chrM.paf",nuc="nuc.paf"
     output:
         "NUMTs.txt"
     shell:
         "python detect_NUMTs.py > {output}"
-
-        
-    
