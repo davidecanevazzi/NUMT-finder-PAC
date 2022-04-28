@@ -82,7 +82,7 @@ rule greps_mit:
     output:
         "chrM.paf"
     shell:
-    	" grep {chrM} aln.paf > {output}"
+    	" grep {chrM} data/aln.paf > {output}"
         
 rule greps_nuc:
     input:
@@ -90,7 +90,7 @@ rule greps_nuc:
     output:
         "nuc.paf"
     shell:
-    	"grep -v {chrM} aln.paf > {output}"
+    	"grep -v {chrM} data/aln.paf > {output}"
         
 rule detect_NUMTs:
     input:
