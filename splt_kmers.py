@@ -31,7 +31,7 @@ if __name__ == '__main__':
             if(i[0]=='>'):
                 append=1
                 i=i.split()
-                name=str(i)+'_k_mer_number='
+                name=i[0]+'_k_mer_number='
             else:
                 k_mers=k_mer_split(i,1000,1000,name)
                 print("\n".join(k_mers))
