@@ -20,9 +20,10 @@ if __name__ == '__main__':
         for i in paf:
             line=i.split()
             last=name
-            read=line[0].split(sep='_')
-            name=read[0]
-            number=int(read[3].split(sep='=')[1])
+            read=line[0]
+            tmp=read.split(sep='&')
+            name=tmp[0]
+            number=int(read.split(sep='=')[1])
             if(last!=name):
                     #k=ultimo
                     #while(k<num_lines):
@@ -42,9 +43,10 @@ if __name__ == '__main__':
                     #f = islice(paf_query, last_pos, None)
                     for j in paf_query:
                         line_query=j.split()
-                        read_query = line_query[0].split(sep='_')
-                        name_query = read_query[0]
-                        number_query = int(read_query[3].split(sep='=')[1])
+                        read_query = line_query[0]
+                        tmp_query=read_query.split(sep='&')
+                        name_query = tmp_query[0]
+                        number_query = int(read_query.split(sep='=')[1])
                         #pos=pos+1
                         if(name==name_query and (number!=number_query) and name!=last_query):
                             #last_pos=last_pos+pos
