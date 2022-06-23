@@ -33,5 +33,5 @@ if __name__ == '__main__':
                 i=i.split()
                 name=i[0]+'&k_mer_number='
             else:
-                k_mers=k_mer_split(i,1000,1000,name)
+                k_mers=k_mer_split(i,300,300,name)
                 print("\n".join(k_mers))
