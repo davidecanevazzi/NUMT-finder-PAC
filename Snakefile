@@ -33,7 +33,7 @@ rule minimap_mit:
     output:
         "data/mit.paf"
     shell:
-        "minimap2 -t 24 -z 600,200 -x map-ont data/mit_reference.fasta data/sample.fasta > {output}"
+        "minimap2 -t 24 data/mit_reference.fasta data/sample.fasta > {output}"
 
 rule select_chrM:
     input:
@@ -66,7 +66,7 @@ rule minimap_tot:
     output:
         "data/aln_pre.paf"
     shell:
-        "minimap2 -t 24 -z 600,200 -x map-ont data/GRCh38.primary_assembly.genome.fa data/k_mers.fasta > {output}"
+        "minimap2 -t 24 data/GRCh38.primary_assembly.genome.fa data/k_mers.fasta > {output}"
     
 rule filt:
     input:
