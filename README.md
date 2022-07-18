@@ -1,5 +1,5 @@
 # NUMT-finder
-Snakemake pipeline for detecting NUMTs from ONT reads
+Snakemake pipeline for detecting NUMTs from PacBio reads
 
 ---
 ## Setup on the cluster: 
